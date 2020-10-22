@@ -6,9 +6,16 @@ export interface Post extends Document {
   comments?: string[];
 }
 
-const PostSchema : Schema = new mongoose.Schema({
+const PostSchema: Schema = new mongoose.Schema({
   content: { type: String, required: true },
-  comments: { type: [String] },
+  comments: {
+    type: [
+      {
+        postId: { type: mongoose.Types.ObjectId },
+        comment: { type: String },
+      },
+    ],
+  },
 });
 
 const Post = mongoose.model<Post>("Post", PostSchema);

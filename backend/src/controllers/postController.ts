@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import mongoose from "../database";
 import Post from "../models/post";
 
 /* GET /posts 
@@ -57,11 +58,12 @@ Faz a inclusão de um novo comentário para um determinado post */
 
 export const createComment = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { content } = req.body;
+  const comment = req.body;
   try {
     const post = await Post.findById(id);
     if(post){
-      post.comments?.push(content)
+      comment.postId = id
+      post.comments?.push(comment)
       await post.save()
     }
     return res.json(post);
