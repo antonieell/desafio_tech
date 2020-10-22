@@ -1,7 +1,6 @@
-import mongoose from '../database/'
 import {Request, Response} from 'express'
+import Post from '../models/post'
 
-const Post = mongoose.model('Post')
 
 /* GET /posts 
 Retorna a lista de posts */
