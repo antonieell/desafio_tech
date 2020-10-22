@@ -31,8 +31,8 @@ caso não exista deverá retornar 404 Not Found */
 export const getCommentsById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const getPostById = Post.find({ _id: id });
-    return res.status(200).send(getPostById);
+    const getPostById = await Post.findById(id);
+    return res.status(200).send(getPostById?.comments);
   } catch (error) {
     console.log(error);
     return res.send({ err: "Post não encontrado" }).status(404);
