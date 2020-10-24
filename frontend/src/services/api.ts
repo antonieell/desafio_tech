@@ -1,12 +1,12 @@
 const baseUrl = "http://localhost:3001";
 
-interface Comment {
+export interface Comment {
   _id?: string;
   comment: string;
   postId?: string;
 }
 
-interface Post {
+export interface Post {
   __id?: string;
   __v?: number;
   comments?: number;

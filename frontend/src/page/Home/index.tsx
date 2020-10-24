@@ -6,7 +6,7 @@ import Posts from './Posts';
 const Home = () => {
   return (
     <>
-      <Container className="title">
+      <Container className="header">
         <Title>Ultimos Posts @Techagrbook</Title>
       </Container>
       <Posts />
