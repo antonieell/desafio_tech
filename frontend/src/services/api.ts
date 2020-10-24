@@ -1,40 +1,57 @@
 const baseUrl = "http://localhost:3001";
 
-export const getPosts = async () => {
+interface Comment {
+  _id?: string;
+  comment: string;
+  postId?: string;
+}
+
+interface Post {
+  __id?: string;
+  __v?: number;
+  comments?: number;
+  content: string;
+}
+
+export const getPosts = async (): Promise<Post[] | undefined> => {
   const url = baseUrl + "/posts";
   try {
     const resp = await fetch(url);
-    const data = await resp.json();
+    const data: Post[] = await resp.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
-export const getPostsById = async (id: string) => {
+export const getPostsById = async (id: string): Promise<Post | undefined> => {
   const url = baseUrl + `/posts/${id}`;
   try {
     const resp = await fetch(url);
-    const data = await resp.json();
+    const data: Post = await resp.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
-export const getCommentsById = async (PostId: string) => {
+export const getCommentsById = async (
+  PostId: string
+): Promise<Comment | undefined> => {
   const url = baseUrl + `/posts/${PostId}/comments`;
   try {
     const resp = await fetch(url);
-    const data = await resp.json();
+    const data: Comment = await resp.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
-type Comment = { comment: string };
-export const setCommentsById = async (postId: string, comment: Comment) => {
+export const setCommentsById = async (
+  postId: string,
+  comment: Comment
+): Promise<Comment | undefined> => {
   const url = baseUrl + `/posts/${postId}/comments`;
   try {
     const resp = await fetch(url, {
@@ -47,14 +64,11 @@ export const setCommentsById = async (postId: string, comment: Comment) => {
     const data = await resp.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
-type Post = {
-  content: string;
-};
-export const setPost = async (content: Post) => {
+export const setPost = async (content: Post): Promise<Post | undefined> => {
   const url = baseUrl + `/posts`;
   try {
     const resp = await fetch(url, {
@@ -67,6 +81,6 @@ export const setPost = async (content: Post) => {
     const data = resp.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
