@@ -6,7 +6,7 @@ import Post from "../models/post";
 Retorna a lista de posts */
 export const getPosts = async (req: Request, res: Response) => {
   try {
-    const allPosts = await Post.find();
+    const allPosts = await Post.find().orFail();
     return res.status(200).send(allPosts);
   } catch (error) {
     console.log(error);
@@ -19,7 +19,7 @@ export const getPosts = async (req: Request, res: Response) => {
 export const getPostsById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const getPostById = await Post.findById(id);
+    const getPostById = await Post.findById(id).orFail();
     return res.status(200).send(getPostById);
   } catch (error) {
     console.log(error);
@@ -32,7 +32,7 @@ caso não exista deverá retornar 404 Not Found */
 export const getCommentsById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const getPostById = await Post.findById(id);
+    const getPostById = await Post.findById(id).orFail();
     return res.status(200).send(getPostById?.comments);
   } catch (error) {
     console.log(error);
@@ -60,7 +60,7 @@ export const createComment = async (req: Request, res: Response) => {
   const { id } = req.params;
   const comment = req.body;
   try {
-    const post = await Post.findById(id);
+    const post = await Post.findById(id).orFail();
     if(post){
       comment.postId = id
       post.comments?.push(comment)
