@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Container from "../../components/Container/";
 import Title from "../../components/Title/";
-import { getPosts, Post as PostInterface } from "../../services/api";
 import { Wrapper } from "./styles";
-
-const Posts = () => {
-  const [posts, setPosts] = useState<PostInterface[] | undefined>();
-  useEffect(() => {
-    (async () => {
-      const data = await getPosts();
-      setPosts(data);
-    })();
-  }, []);
+import { Post as PostInterface } from "../../services/api";
+type postsProps = {
+  posts: PostInterface[]|undefined
+}
+const Posts: React.FC<postsProps> = ({posts}) => {
   return (
     <>
       {posts ? (
@@ -31,7 +26,7 @@ const Posts = () => {
 
 const Post: React.FC<{ postContent: PostInterface }> = ({ postContent }) => {
   return (
-    <Container key={postContent.__id}>
+    <Container className="clicable" key={postContent.__id}>
       <Title textAlign="left">{postContent.content}</Title>
     </Container>
   );

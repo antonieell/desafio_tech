@@ -11,7 +11,14 @@ export const Container = styled.div`
   &.header{
     margin-bottom: 2.4rem;
   }
+  &.clicable:hover{
+    cursor: pointer;
+    background: #ded;
+    transform: scale(1.05);
+    transition: all 0.05s ease-in
+  }
   @media (min-width: 1180px) {
     margin: 0 1.6rem;
   }
+
 `;
