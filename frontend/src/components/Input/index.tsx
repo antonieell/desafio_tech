@@ -10,6 +10,10 @@ interface InputProps {
   onClick: () => void;
 }
 const Input: React.FC<InputProps> = ({state, setState, onClick}) => {
+  const handleState = (callback: any) => {
+    setState("")
+    callback()
+  }
   return (
     <InputWrapper>
       <input
@@ -17,7 +21,7 @@ const Input: React.FC<InputProps> = ({state, setState, onClick}) => {
         value={state}
         onChange={(e) =>setState(e.target.value)}
       />
-      <button onClick={onClick}>
+      <button onClick={() => handleState(onClick)}>
         <AiOutlineSend size={32} color="#0b0" />
       </button>
     </InputWrapper>
