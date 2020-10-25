@@ -20,8 +20,7 @@ const Home = () => {
     const resp = await setPost(sendPostContent)
     if (resp) {
       setPosts((prev) => {
-        prev?.push(resp);
-        return prev;
+        if(prev) return [resp, ...prev ];
       });
     }
   }
