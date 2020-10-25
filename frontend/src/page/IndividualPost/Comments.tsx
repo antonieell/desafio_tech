@@ -4,21 +4,22 @@ import Container from "../../components/Container/";
 import Title from "../../components/Title/";
 import Wrapper  from "../../components/WrapperPosts";
 import { Comment as CommentInterface } from "../../services/api";
-import Post from "../../components/Post/";
+import Post, {CommentCard} from "../../components/Post/";
 
 type CommentListProps = {
   comments: CommentInterface[] | undefined;
 };
 
 const CommentList: React.FC<CommentListProps> = ({comments}) => {
+console.log(comments)
   return (
     <>
       {comments ? (
         <Wrapper>
           {comments.map((value, idx) => (
-            <Post
+            <CommentCard
               key={idx}
-              postContent={value}
+              commentContent={value}
             />
           ))}
         </Wrapper>

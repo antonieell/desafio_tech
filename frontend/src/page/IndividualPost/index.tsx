@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from "../../components/Container/";
 import Title from "../../components/Title/";
 import Input from "../../components/Input";
-import { getCommentsById, Comment } from "../../services/api";
+import { getCommentsById, Comment, setCommentsById } from "../../services/api";
 import { useParams, useLocation } from "react-router-dom";
 import CommentList from "./Comments";
 
@@ -17,9 +17,22 @@ const PostById = () => {
     (async () => {
       const data = await getCommentsById(id);
       setCommentList(data);
-      console.log("Comentários:", commentList);
     })();
-  }, [id, state.postContent, commentList]);
+  }, [id]);
+
+  const submitContent = async () => {
+    const sendCommentContent: Comment = { content: commentContent };
+    console.log(sendCommentContent);
+    const resp = await setCommentsById(id, sendCommentContent);
+    console.log(resp);
+    if (resp) {
+      if (!resp.err) {
+        setCommentList((prev) => {
+          if (prev) return [resp, ...prev];
+        });
+      }
+    }
+  };
 
   return (
     <>
@@ -27,14 +40,12 @@ const PostById = () => {
       <Container className="header">
         <Title>Ultimos Posts @Techagrbook</Title>
       </Container>
-        <Title>Comentários: </Title>
-        <CommentList comments={commentList}/>
+      <Title>Comentários: </Title>
+      <CommentList comments={commentList} />
       <Input
         setState={setCommentContent}
         state={commentContent}
-        onClick={() => {
-          console.log("Comentario");
-        }}
+        onClick={submitContent}
       />
     </>
   );

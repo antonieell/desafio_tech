@@ -1,12 +1,16 @@
 const baseUrl = "http://localhost:3001";
 
-export interface Comment {
+export interface ErrorRequest {
+  err?: string;
+}
+export interface Comment extends ErrorRequest {
   _id?: string;
   content: string;
   postId?: string;
+  comment?: string;
 }
 
-export interface Post {
+export interface Post extends ErrorRequest {
   _id?: string;
   __v?: number;
   comments?: number;
@@ -52,20 +56,19 @@ export const setCommentsById = async (
   postId: string,
   comment: Comment
 ): Promise<Comment | undefined> => {
-  const url = baseUrl + `/posts/${postId}/comments`;
-  try {
+    const url = baseUrl + `/posts/${postId}/comments`;
+    const sendData = {comment: comment.content}
     const resp = await fetch(url, {
       headers: {
-        "Content-type": "application/json/ charset=UTF-8",
+        "Content-type": "application/json; charset=UTF-8",
       },
       method: "POST",
-      body: JSON.stringify(comment),
+      body: JSON.stringify(sendData),
     });
-    const data = await resp.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+    const data = resp.json()
+    
+    return data
+    
 };
 
 export const setPost = async (content: Post): Promise<Post | undefined> => {
