@@ -3,7 +3,7 @@ import Container from "../../components/Container/";
 import Title from "../../components/Title/";
 import Input from "../../components/Input";
 import { getCommentsById, Comment, setCommentsById } from "../../services/api";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import CommentList from "./Comments";
 
 const PostById = () => {
@@ -11,7 +11,6 @@ const PostById = () => {
   const [commentContent, setCommentContent] = useState();
 
   const { id } = useParams();
-  const { state } = useLocation();
 
   useEffect(() => {
     (async () => {

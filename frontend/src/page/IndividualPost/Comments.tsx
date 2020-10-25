@@ -4,7 +4,7 @@ import Container from "../../components/Container/";
 import Title from "../../components/Title/";
 import Wrapper  from "../../components/WrapperPosts";
 import { Comment as CommentInterface } from "../../services/api";
-import Post, {CommentCard} from "../../components/Post/";
+import {CommentCard} from "../../components/Post/";
 
 type CommentListProps = {
   comments: CommentInterface[] | undefined;
