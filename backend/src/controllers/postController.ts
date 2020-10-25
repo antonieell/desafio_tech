@@ -6,7 +6,7 @@ import Post from "../models/post";
 Retorna a lista de posts */
 export const getPosts = async (req: Request, res: Response) => {
   try {
-    const allPosts = await Post.find().orFail();
+    const allPosts = await Post.find();
     return res.status(200).send(allPosts);
   } catch (error) {
     console.log(error);
@@ -23,7 +23,7 @@ export const getPostsById = async (req: Request, res: Response) => {
     return res.status(200).send(getPostById);
   } catch (error) {
     console.log(error);
-    return res.send({ err: "Post não encontrado" }).status(404);
+    return res.status(404).send({ err: "Post não encontrado" });
   }
 };
 
@@ -36,7 +36,7 @@ export const getCommentsById = async (req: Request, res: Response) => {
     return res.status(200).send(getPostById?.comments);
   } catch (error) {
     console.log(error);
-    return res.send({ err: "Post não encontrado" }).status(404);
+    return res.status(404).send({ err: "Post não encontrado" });
   }
 };
 
@@ -49,7 +49,7 @@ export const createPost = async (req: Request, res: Response) => {
     return res.json(post);
   } catch (error) {
     console.log(error);
-    return res.json({ err: "Não foi possível criar o post" }).status(500);
+    return res.status(500).json({ err: "Não foi possível criar o post" });
   }
 };
 
@@ -61,14 +61,15 @@ export const createComment = async (req: Request, res: Response) => {
   const comment = req.body;
   try {
     const post = await Post.findById(id).orFail();
+    if (!comment) throw "Ta faltando o comentário";
     if(post){
       comment.postId = id
       post.comments?.push(comment)
       await post.save()
     }
     return res.json(post);
-  } catch (error) {
-    console.log(error);
-    return res.json({ err: "Não foi possível encontrar o post" }).status(500);
+  } catch (err) {
+    console.log('ERROR: ',err)
+    return res.status(500).json({ err: "Não foi possível criar o comentário." });
   }
 };
