@@ -2,24 +2,36 @@ import React, {useState, useEffect} from 'react'
 import Container from "../../components/Container/";
 import Title from "../../components/Title/"
 import Posts from './Posts';
-import Input from './Input';
-import { getPosts, Post as PostInterface } from "../../services/api";
+import Input from '../../components/Input';
+import { getPosts,setPost, Post as PostInterface } from "../../services/api";
 
 const Home = () => {
   const [posts, setPosts] = useState<PostInterface[] | undefined>();
+  const [postContent,setPostContent] = useState("")
   useEffect(() => {
     (async () => {
       const data = await getPosts();
       setPosts(data);
     })();
   }, []);
+
+  const submitPost = async () => {
+    const sendPostContent: PostInterface ={content: postContent}
+    const resp = await setPost(sendPostContent)
+    if (resp) {
+      setPosts((prev) => {
+        prev?.push(resp);
+        return prev;
+      });
+    }
+  }
   return (
     <>
       <Container className="header">
         <Title>Ultimos Posts @Techagrbook</Title>
       </Container>
       <Posts posts={posts}/>
-      <Input setPostState={setPosts}/>
+      <Input onClick={submitPost} setState={setPostContent} state={postContent}/>
     </>
   );
 };
