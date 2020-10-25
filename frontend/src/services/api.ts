@@ -7,7 +7,7 @@ export interface Comment {
 }
 
 export interface Post {
-  __id?: string;
+  _id?: string;
   __v?: number;
   comments?: number;
   content: string;
