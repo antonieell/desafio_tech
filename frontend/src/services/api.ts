@@ -2,7 +2,7 @@ const baseUrl = "http://localhost:3001";
 
 export interface Comment {
   _id?: string;
-  comment: string;
+  content: string;
   postId?: string;
 }
 
@@ -37,11 +37,11 @@ export const getPostsById = async (id: string): Promise<Post | undefined> => {
 
 export const getCommentsById = async (
   PostId: string
-): Promise<Comment | undefined> => {
+): Promise<Comment[] | undefined> => {
   const url = baseUrl + `/posts/${PostId}/comments`;
   try {
     const resp = await fetch(url);
-    const data: Comment = await resp.json();
+    const data: Comment[] = await resp.json();
     return data;
   } catch (error) {
     console.error(error);

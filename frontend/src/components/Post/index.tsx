@@ -6,10 +6,10 @@ import { useHistory } from "react-router-dom";
 
 const Post: React.FC<{
   postContent: PostInterface | Comment;
-  actionOnClick: () => void;
+  actionOnClick?: () => void;
 }> = ({ postContent, actionOnClick }) => {
   return (
-    <Container className="clicable" onClick={() => actionOnClick()}>
+    <Container className="clicable" onClick={() => actionOnClick && actionOnClick()}>
       <Title textAlign="left">{postContent.content}</Title>
     </Container>
   );

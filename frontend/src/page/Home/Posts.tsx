@@ -16,6 +16,7 @@ const Posts: React.FC<postsProps> = ({posts}) => {
   const pushToPost = (postId: string | undefined, state: any) => {
     if (postId) history.push({ pathname: `/post/${postId}`, state });
   };
+
   return (
     <>
       {posts ? (

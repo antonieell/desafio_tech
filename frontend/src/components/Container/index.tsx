@@ -1,8 +1,12 @@
 import React from 'react';
 import {Container} from './style'
 
-const ContainerComponent: React.FC<{ className?: string }> = ({ children, className }) => {
-  return <Container className={className}>{children}</Container>;
+interface ContainerProps {
+  className?: string;
+  onClick?: () => void;
+}
+const ContainerComponent: React.FC<ContainerProps> = ({ children, className, onClick }) => {
+  return <Container onClick={onClick} className={className}>{children}</Container>;
 };
 
 export default ContainerComponent;

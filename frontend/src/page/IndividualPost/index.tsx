@@ -1,31 +1,43 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import Container from "../../components/Container/";
-import Title from "../../components/Title/"
-import Posts from './Posts';
-import Input from './Input';
-import { getPosts, Post as PostInterface } from "../../services/api";
-import {useParams} from 'react-router-dom';
+import Title from "../../components/Title/";
+import Input from "../../components/Input";
+import { getCommentsById, Comment } from "../../services/api";
+import { useParams, useLocation } from "react-router-dom";
+import CommentList from "./Comments";
 
-const Post= () => {
-  const [posts, setPosts] = useState<PostInterface[] | undefined>();
-  const {id}= useParams()
-console.log(id)
+const PostById = () => {
+  const [commentList, setCommentList] = useState<Comment[] | undefined>([]);
+  const [commentContent, setCommentContent] = useState();
+
+  const { id } = useParams();
+  const { state } = useLocation();
+
   useEffect(() => {
     (async () => {
-      const data = await getPosts();
-      setPosts(data);
+      const data = await getCommentsById(id);
+      setCommentList(data);
+      console.log("Comentários:", commentList);
     })();
-  }, []);
+  }, [id, state.postContent, commentList]);
+
   return (
     <>
-      <Title>Post individual</Title>
+      <Title>Post de id: {id}</Title>
       <Container className="header">
         <Title>Ultimos Posts @Techagrbook</Title>
       </Container>
-      <Posts posts={posts}/>
-      <Input setPostState={setPosts}/>
+        <Title>Comentários: </Title>
+        <CommentList comments={commentList}/>
+      <Input
+        setState={setCommentContent}
+        state={commentContent}
+        onClick={() => {
+          console.log("Comentario");
+        }}
+      />
     </>
   );
 };
 
-export default Post;
+export default PostById;
