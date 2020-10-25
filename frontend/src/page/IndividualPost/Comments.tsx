@@ -11,7 +11,6 @@ type CommentListProps = {
 };
 
 const CommentList: React.FC<CommentListProps> = ({comments}) => {
-console.log(comments)
   return (
     <>
       {comments ? (

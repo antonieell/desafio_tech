@@ -3,7 +3,7 @@ import Container from "../../components/Container/";
 import Title from "../../components/Title/";
 import Input from "../../components/Input";
 import { getCommentsById, Comment, setCommentsById } from "../../services/api";
-import { useParams} from "react-router-dom";
+import { useParams, Link} from "react-router-dom";
 import CommentList from "./Comments";
 
 const PostById = () => {
@@ -21,9 +21,7 @@ const PostById = () => {
 
   const submitContent = async () => {
     const sendCommentContent: Comment = { content: commentContent };
-    console.log(sendCommentContent);
     const resp = await setCommentsById(id, sendCommentContent);
-    console.log(resp);
     if (resp) {
       if (!resp.err) {
         setCommentList((prev) => {
@@ -35,9 +33,11 @@ const PostById = () => {
 
   return (
     <>
-      <Title>Post de id: {id}</Title>
+      <Title>
+        <Link to="/">Voltar</Link>
+      </Title>
       <Container className="header">
-        <Title>Ultimos Posts @Techagrbook</Title>
+        <Title>Post de id: {id}</Title>
       </Container>
       <Title>Comentários: </Title>
       <CommentList comments={commentList} />

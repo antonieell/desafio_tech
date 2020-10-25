@@ -1,44 +1,152 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Processo seletivo Dev Fullstack
 
-## Available Scripts
+## :ledger: Index
 
-In the project directory, you can run:
+- [About](#beginner-about)
+- [Usage](#zap-usage)
+  - [Installation](#electric_plug-installation)
+  - [Commands](#package-commands)
+- [Development](#wrench-development)
+  - [Pre-Requisites](#notebook-pre-requisites)
+  - [Developmen Environment](#nut_and_bolt-development-environment)
+  - [File Structure](#file_folder-file-structure)
+  - [Build](#hammer-build)  
+  - [Deployment](#rocket-deployment)  
+- [Community](#cherry_blossom-community)
+  - [Contribution](#fire-contribution)
+  - [Branches](#cactus-branches)
+  - [Guideline](#exclamation-guideline)  
+- [FAQ](#question-faq)
+- [Resources](#page_facing_up-resources)
+- [Gallery](#camera-gallery)
+- [Credit/Acknowledgment](#star2-creditacknowledgment)
+- [License](#lock-license)
 
-### `yarn start`
+##  :beginner: About
+Add a detailed introduction about the project here, everything you want the reader to know.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## :zap: Usage
+Write about how to use this project.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+###  :electric_plug: Installation
+- Steps on how to install this project, to use it.
+- Be very detailed here, For example, if you have tools which run on different operating systems, write installation steps for all of them.
 
-### `yarn test`
+```
+$ add installations steps if you have to.
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###  :package: Commands
+- Commands to start the project.
 
-### `yarn build`
+##  :wrench: Development
+If you want other people to contribute to this project, this is the section, make sure you always add this.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### :notebook: Pre-Requisites
+List all the pre-requisites the system needs to develop this project.
+- A tool
+- B tool
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+###  :nut_and_bolt: Development Environment
+Write about setting up the working environment for your project.
+- How to download the project...
+- How to install dependencies...
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+###  :file_folder: File Structure
+Add a file structure here with the basic details about files, below is an example.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+.
+├── assets
+│   ├── css
+│   │   ├── index-ui.css
+│   │   └── rate-ui.css
+│   ├── images
+│   │   ├── icons
+│   │   │   ├── shrink-button.png
+│   │   │   └── umbrella.png
+│   │   ├── logo_144.png
+│   │   └── Untitled-1.psd
+│   └── javascript
+│       ├── index.js
+│       └── rate.js
+├── CNAME
+├── index.html
+├── rate.html
+└── README.md
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| No | File Name | Details 
+|----|------------|-------|
+| 1  | index | Entry point
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+###  :hammer: Build
+Write the build Instruction here.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### :rocket: Deployment
+Write the deployment instruction here.
 
-## Learn More
+## :cherry_blossom: Community
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+If it's open-source, talk about the community here, ask social media links and other links.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+ ###  :fire: Contribution
+
+ Your contributions are always welcome and appreciated. Following are the things you can do to contribute to this project.
+
+ 1. **Report a bug** <br>
+ If you think you have encountered a bug, and I should know about it, feel free to report it [here]() and I will take care of it.
+
+ 2. **Request a feature** <br>
+ You can also request for a feature [here](), and if it will viable, it will be picked for development.  
+
+ 3. **Create a pull request** <br>
+ It can't get better then this, your pull request will be appreciated by the community. You can get started by picking up any open issues from [here]() and make a pull request.
+
+ > If you are new to open-source, make sure to check read more about it [here](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source) and learn more about creating a pull request [here](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github).
+
+
+ ### :cactus: Branches
+
+ I use an agile continuous integration methodology, so the version is frequently updated and development is really fast.
+
+1. **`stage`** is the development branch.
+
+2. **`master`** is the production branch.
+
+3. No other permanent branches should be created in the main repository, you can create feature branches but they should get merged with the master.
+
+**Steps to work with feature branch**
+
+1. To start working on a new feature, create a new branch prefixed with `feat` and followed by feature name. (ie. `feat-FEATURE-NAME`)
+2. Once you are done with your changes, you can raise PR.
+
+**Steps to create a pull request**
+
+1. Make a PR to `stage` branch.
+2. Comply with the best practices and guidelines e.g. where the PR concerns visual elements it should have an image showing the effect.
+3. It must pass all continuous integration checks and get positive reviews.
+
+After this, changes will be merged.
+
+
+### :exclamation: Guideline
+coding guidelines or other things you want people to follow should follow.
+
+
+## :question: FAQ
+You can optionally add a FAQ section about the project.
+
+##  :page_facing_up: Resources
+Add important resources here
+
+##  :camera: Gallery
+Pictures of your project.
+
+## :star2: Credit/Acknowledgment
+Credit the authors here.
+
+##  :lock: License
+Add a license here, or a link to it.
+

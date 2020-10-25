@@ -1,15 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Home from "./page/Home";
 import Post from "./page/IndividualPost";
 
 function App() {
-  useEffect(() => {
-    (async () => {
-      console.log("useEffect");
-    })();
-  }, []);
-
   return (
     <Router>
       <Switch>
