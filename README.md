@@ -1,7 +1,7 @@
-# Processo seletivo Dev Fullstack - @techagr
+# Processo seletivo Dev Fullstack
 
 ##  :beginner:  Sobre
-Desafio relativo ao processo seletivo para a vaga de desenvolvedor FullStack  @Tech. Criação de uma aplicação capaz de servir posts salvos e comentários vinculados a esses posts, uma aplicação clássica de posts e comentários como o twitter/facebook.
+Desafio relativo ao processo seletivo para a vaga de desenvolvedor FullStack. Criação de uma aplicação capaz de servir posts salvos e comentários vinculados a esses posts, uma aplicação clássica de posts e comentários como o twitter/facebook.
 
 ## :ledger: Tecnologias utilizadas:
 - Versionamento
@@ -87,12 +87,10 @@ $ yarn start
 ├── dist
 │   ├── app.js
 │   ├── controllers
-│   │   ├── postController.js
-│   │   └── posts.js
+│   │   └── postController.js
 │   ├── database
 │   │   └── index.js
 │   ├── models
-│   │   ├── comments.js
 │   │   └── post.js
 │   ├── routes
 │   │   └── index.js
@@ -109,7 +107,6 @@ $ yarn start
 │   │   └── index.ts
 │   └── server.ts
 ├── tsconfig.json
-├── yarn-error.log
 └── yarn.lock
 
 ```
