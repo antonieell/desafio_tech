@@ -82,7 +82,7 @@ $ yarn start
 ├── frontend
 └── README.md
 ```
-##Backend
+## Frontend
 ```
 ├── dist
 │   ├── app.js
@@ -110,7 +110,7 @@ $ yarn start
 └── yarn.lock
 
 ```
-##Backend
+### Backend
 ```
 ├── package.json
 ├── public
